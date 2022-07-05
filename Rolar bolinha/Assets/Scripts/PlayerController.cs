@@ -1,11 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public int coins = 0;
+
+    public TMP_Text coinText;
 
     public float moveSeed;
     public float maxVelocity;
@@ -135,5 +139,16 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Debug.DrawRay(transform.position, Vector3.down * rayDistance, Color.cyan);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Coin"))
+        {
+            coins++;
+            coinText.text = coins.ToString();
+            Destroy(other.gameObject);
+        }
+            
     }
 }
