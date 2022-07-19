@@ -8,9 +8,6 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public int coins = 0;
-
-    public TMP_Text coinText;
-
     public float moveSeed;
     public float maxVelocity;
 
@@ -146,7 +143,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             coins++;
-            coinText.text = coins.ToString();
+            PlayerObserverManeger.OnPlayerCoinsChanged(coins);
             Destroy(other.gameObject);
         }
             

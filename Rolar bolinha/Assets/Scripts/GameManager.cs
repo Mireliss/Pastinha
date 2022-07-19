@@ -24,6 +24,15 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadSceneAsync(locationToLoad, LoadSceneMode.Additive).completed += operation =>
         {
+            Scene locationScene = default;
+            for (int i = 0; i < SceneManager.sceneCount; i++)
+            {
+                locationScene = SceneManager.GetSceneAt(i);
+                break;
+            }
+
+            if (locationScene != default) SceneManager.SetActiveScene(locationScene);
+            
             Vector3 starPosition = GameObject.Find("PlayerStart").transform.position;
 
             Instantiate(playerAndCameraPrefab, starPosition, Quaternion.identity);
