@@ -14,4 +14,13 @@ public static class PlayerObserverManeger
     {
         OnPlayerCoinsChanged?.Invoke(value);
     }
+    
+    // esse vai ser o nosso canal para atualizações da quantidade de coisas do jogador.
+    public static Action<int> OnPlayerMoneysChanged;
+    
+    // A segunda parte é como o player notifica seus inscritos que as moedas.
+    public static void PlayerMoneysChanged(int value)
+    {
+        OnPlayerMoneysChanged?.Invoke(value);
+    }
 }
