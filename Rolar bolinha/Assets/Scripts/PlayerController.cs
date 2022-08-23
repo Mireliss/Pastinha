@@ -146,13 +146,13 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             coins++;
-            PlayerObserverManeger.OnPlayerCoinsChanged(coins);
+            PlayerObserverManeger.PlayerCoinsChanged(coins);
             Destroy(other.gameObject);
         }
         if (other.CompareTag("Coletaveis"))
         {
             moneys++;
-            PlayerObserverManeger.OnPlayerMoneysChanged(moneys);
+            PlayerObserverManeger.PlayerMoneysChanged(moneys);
             Destroy(other.gameObject);
         }
             

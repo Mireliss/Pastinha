@@ -14,4 +14,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GUI.unity
     guid: 70f9e2f972b189b44b12ee90b5afaf74
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 13f3354331eedbd44bfb2aff4a7041b5
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 236357579ececd9488712d6b8ee90965
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: aa0a1b28f54fba546b002235e5796ba7
+  - enabled: 1
+    path: Assets/Scenes/Splash.unity
+    guid: 7d8712728bd18c748a58fc02f7ca6b73
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 849413ec6e8d69e4f92cb71b5a2040be
   m_configObjects: {}
