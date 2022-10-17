@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
   
     public int coins = 0;
     public int moneys = 0;
+    public int maxHealth = 100;
 
 
     public float moveSeed;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveInput;
 
     private bool _isGrounded;
+    private int _currentHealth;
 
     
 
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
         // delegate do action triggered no player input
         _playerInput.onActionTriggered += OnActionTriggered;
+        _currentHealth = maxHealth;
     }
 
     private void OnDisable()
@@ -161,6 +164,35 @@ public class PlayerController : MonoBehaviour
             PlayerObserverManeger.PlayerMoneysChanged(moneys);
             Destroy(other.gameObject);
         }
+
+        if (other.CompareTag("FinishDoor"))
+        {
             
+            GameManager.Instance.PlayerReachedFinishDoor();
+        }
+    }
+
+    private void TakeDamege(int damege)
+    {
+        _currentHealth -= damege;
+        if (_currentHealth <= 0)
+        {
+            _currentHealth = 0;
+            // alguma funçõo no game maneger pra indicar que o jogador morreu
+        }
+    }
+
+    public void HealHealth(int heal)
+    {
+        _currentHealth += heal;
+        if (_currentHealth >= maxHealth) _currentHealth = maxHealth;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Spikes"))
+        {
+            TakeDamege(5);
+        }
     }
 }
